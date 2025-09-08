@@ -123,7 +123,7 @@ const ProductFilters = ({
         <Input
           type="number"
           label="Min Price"
-          placeholder="$0"
+          placeholder="₹0"
           value={filters?.minPrice || ''}
           onChange={(e) => handleFilterChange('minPrice', e?.target?.value)}
           min="0"
@@ -133,7 +133,7 @@ const ProductFilters = ({
         <Input
           type="number"
           label="Max Price"
-          placeholder="$999"
+          placeholder="₹999"
           value={filters?.maxPrice || ''}
           onChange={(e) => handleFilterChange('maxPrice', e?.target?.value)}
           min="0"
@@ -212,7 +212,7 @@ const ProductFilters = ({
 
           {(filters?.minPrice || filters?.maxPrice) && (
             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent">
-              Price: ${filters?.minPrice || '0'} - ${filters?.maxPrice || '∞'}
+              Price: ₹{filters?.minPrice || '0'} - ₹{filters?.maxPrice || '∞'}
               <button
                 onClick={() => {
                   handleFilterChange('minPrice', '');

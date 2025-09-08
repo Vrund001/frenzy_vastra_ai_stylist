@@ -17,8 +17,8 @@ const ProductCard = ({
     id: 1,
     sku: 'TSH-001',
     name: 'Classic Cotton Crew Neck T-Shirt',
-    price: 29.99,
-    originalPrice: 39.99,
+    price: 2499,
+    originalPrice: 3299,
     image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400',
     images: [
       'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400',
@@ -73,6 +73,13 @@ const ProductCard = ({
   const discountPercentage = mockProduct?.originalPrice 
     ? Math.round(((mockProduct?.originalPrice - mockProduct?.price) / mockProduct?.originalPrice) * 100)
     : 0;
+
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR'
+    })?.format(price);
+  };
 
   return (
     <div 
@@ -146,11 +153,11 @@ const ProductCard = ({
         {/* Price */}
         <div className="flex items-center space-x-2 mb-3">
           <span className="text-lg font-semibold text-primary">
-            ${mockProduct?.price}
+            {formatPrice(mockProduct?.price)}
           </span>
           {mockProduct?.originalPrice && mockProduct?.originalPrice > mockProduct?.price && (
             <span className="text-sm text-text-secondary line-through">
-              ${mockProduct?.originalPrice}
+              {formatPrice(mockProduct?.originalPrice)}
             </span>
           )}
         </div>
